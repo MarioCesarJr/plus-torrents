@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<f:metadata>
+		<f:viewParam name="codigo" value="#{catalogoFilmesBean.filme}" />
+	</f:metadata>
+
+	<ui:define name="corpo">
+
+		<div id="main" class="container">
+			<h3 class="page-header">Filme</h3>
+
+		<h:form>
+			<div class="row">
+				<div class="col-md-4">
+                 
+					<p>
+						
+					</p>
+					<p>
+                       <img jsf:value="#{catalogoFilmesBean.filme.linkImagem}" width="250"   
+									height="365" />					
+					</p>
+                
+				</div>
+
+				<div class="col-md-4">
+					<p style="font-family: Arial">
+						<h:outputLabel value="#{catalogoFilmesBean.filme.sinopse}"/>
+					</p>
+					
+					<p></p>
+					
+					<p style="margin-top: 59px;">
+					<a href="#{catalogoFilmesBean.filme.linkDownload1080p}" class="btn btn-primary btn-lg btn-block" 
+					role="button" target="_blank" >1080p</a></p>
+					
+					<p style="margin-top: 30px;">
+					<a href="#{catalogoFilmesBean.filme.linkDownload720p}" class="btn btn-primary btn-lg btn-block" 
+					role="button" target="_blank" >720p</a></p>
+					
+				</div>
+
+			</div>
+
+		</h:form>	
+		</div>
+	</ui:define>
+
+</ui:composition>

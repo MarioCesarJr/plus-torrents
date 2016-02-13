@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/TemplateAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="corpo">
+		<h1>Cadastro de Filmes</h1>
+		
+		<h:form id="frm" enctype="multipart/form-data">
+		
+			<h:messages/>
+		
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Titulo" />
+				<h:inputText required="true" size="80"
+					value="#{cadastroFilmeBean.filme.titulo}"
+					pt:placeholder="Titulo do filme" />
+			
+			   <h:outputLabel value="Caminho imagem" />
+				<h:inputText required="true" size="80"
+					value="#{cadastroFilmeBean.filme.linkImagem}"
+					pt:placeholder="Path da imagem" />
+					
+			   <h:outputLabel value="Link para Download 1080p" />
+				<h:inputText size="80"
+					value="#{cadastroFilmeBean.filme.linkDownload1080p}"
+					pt:placeholder="Link 1080p" />
+					
+			   <h:outputLabel value="Link para Download 720p" />
+				<h:inputText size="80"
+					value="#{cadastroFilmeBean.filme.linkDownload720p}"
+					pt:placeholder="Link 720p" />
+					
+				<h:outputLabel value="Autor ou Atriz" />
+				<h:inputText  size="80"
+					value="#{cadastroFilmeBean.filme.atorAtrizPricipal}"
+					pt:placeholder="Alguem do elenco principal" />
+					
+				<h:outputLabel value="Sinopse" />			
+			    <h:inputTextarea value="#{cadastroFilmeBean.filme.sinopse}"/>
+				
+				<h:outputLabel/>
+				<h:commandButton value="Adicionar"
+					action="#{cadastroFilmeBean.adicionar}" />
+			</h:panelGrid>
+			
+		</h:form>
+		
+	</ui:define>
+
+</ui:composition>

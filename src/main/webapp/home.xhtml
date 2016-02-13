@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<f:metadata>
+		<f:viewAction action="#{catalogoFilmesBean.consultar}" />
+	</f:metadata>
+
+	<ui:define name="corpo">
+		<div id="main" class="container-fluid">
+
+			<div id="top" class="row">
+				<div class="col-md-3">
+					<h2>Torrents</h2>
+				</div>
+
+
+				<div class="col-md-6">
+					<div class="input-group h2">
+
+						<form jsf:id="frm">
+
+							<span class="input-group-btn"> <input type="text"
+								placeholder="O que está procurando?" size="80"
+								jsf:value="#{catalogoFilmesBean.titulo}" class="form-control"
+								id="search" />
+
+                                <button jsf:action="#{catalogoFilmesBean.consultar}"
+									class="btn btn-primary">
+									<span class="glyphicon glyphicon-search"></span>
+									<f:ajax execute="@form" render="@all"/>
+                                </button>
+							</span>
+						
+						</form>
+
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<!-- <a href="add.html" class="btn btn-primary pull-right h2"></a> -->
+				</div>
+			</div>
+			<div id="list" class="row">
+				<div class="container" style="border-left-width: 82px;">
+					<form style="margin-left: 38px;">
+						<div class="hover14">
+							<div class="vitrine">
+								<ui:repeat var="filme"
+									value="#{catalogoFilmesBean.filmesFiltrados}">
+									<div class="hvr-border-fade">
+										<figure>
+                                            <h:link outcome="movie">
+												<f:param name="codigo" value="#{filme.id}" />
+												<img jsf:value="#{filme.linkImagem}?/filme=#{filme.id}"
+													width="180" height="240" />
+											</h:link>
+										</figure>
+									
+
+									</div>
+								</ui:repeat>
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</ui:define>
+
+</ui:composition>
